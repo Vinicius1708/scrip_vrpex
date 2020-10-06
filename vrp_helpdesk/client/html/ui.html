@@ -1,0 +1,91 @@
+<head>
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <script src="../../configNui.js" type="text/javascript"></script>
+    <script src="scripts.js" type="text/javascript"></script>
+    <script src="debounce.min.js" type="text/javascript"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <script src="sweetalert2.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="dark.css" type="text/css">
+    <script src="https://cdn.ckeditor.com/4.11.4/basic/ckeditor.js%22%3E"></script>
+</head>
+
+<body>
+	<div class="full-screen">
+		<div class="container">
+			<button class="btnClose"><i class="fas fa-times fa-2x"></i></button>
+			<ul>
+				<li><a href="#" id="btnMyCases" class="nav-item" onclick="openMyCases()">Tickets</a></li>
+				<li><a href="#" id="btnNewCase" class="nav-item" onclick="openNewCase()">Abrir Ticket</a></li>
+				<li><a href="#" id="btnSupportCases" class="nav-item" onclick="openSupportCases()">Tickets Abertos</a>
+				</li>
+			</ul>
+			<div id="my-cases">
+				<h3>Meus Tickets</h3>
+				<div id="my-cases-container"></div>
+			</div>
+			<div id="support-cases">
+				<h3>Tickets Abertos</h3>
+				<div id="support-cases-container"></div>
+			</div>
+			<div id="new-case">
+				<h3>Criar Ticket</h3>
+				<input type="text" class="new-case-title textarea" placeholder="Assunto">
+				<textarea name="newCaseEditor" id="newCaseEditor" class="new-case-title textarea" placeholder="Texto"></textarea>
+				<button class="primary-button" onclick="newCase()">Confirmar</button>
+			</div>
+			<div id="show-case">
+				<h3>Buscar Ticket</h3>
+				<button class="primary-button support-btn" onclick="gotoPlayer()">Ir para o jogador</button>
+				<div class="case-info">
+					<h3 id="case-title"></h3>
+					<p id="case-author-id">Criado pelo ID: <span></span> - <b><span id="horaticket"></span></b></p>
+					<p id="case-message"></p>
+				</div>
+				<h3>Respostas:</h3>
+				<div class="case-replies"></div>
+				<div class="caseOpen">
+					<textarea name="replyEditor" id="replyEditor" class="new-case-title textarea" placeholder="Texto"></textarea>
+					<div class="flex">
+						<button class="primary-button" onclick="applyReply()">Enviar</button>
+						<button class="primary-button red-button" onclick="closeCase()">Fechar Ticket</button>
+						<button class="primary-button red-button" onclick="deleteCase()">Excluir Ticket</button>
+					</div>
+				</div>
+				<div class="caseClosed">
+					<h1>O ticket está encerrado!</h1>
+					<button class="primary-button red-button" onclick="deleteCase()">Excluir Ticket</button>
+				</div>
+			</div>
+			<div id="loadingscreen">
+				<div class="lds-ring">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		// CKEDITOR.replace('replyEditor', {
+		// 	toolbar: [
+		// 		{ name: 'document', items: ['Source', '-', 'NewPage', 'Preview', '-', 'Templates'] },
+		// 		['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
+		// 		'/',
+		// 		{ name: 'basicstyles', items: ['Bold', 'Italic'] }
+		// 	]
+		// });
+		// CKEDITOR.replace('newCaseEditor', {
+		// 	toolbar: [
+		// 		{ name: 'document', items: ['Source', '-', 'NewPage', 'Preview', '-', 'Templates'] },
+		// 		['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
+		// 		'/',
+		// 		{ name: 'basicstyles', items: ['Bold', 'Italic'] }
+		// 	]
+		// });
+	</script>
+</body>
