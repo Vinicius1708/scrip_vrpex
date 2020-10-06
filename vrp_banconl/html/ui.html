@@ -1,0 +1,190 @@
+<head>
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="ui.css" type="text/css">
+    <script src="ui.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+    <div class="container" style="display: none">
+        <div class="multa" style="display: none">
+            <i class="material-icons">payment</i><span id="text">Pagar Multa</span>
+            <span class="clean" id="botao2"><i class="material-icons">clear</i></span>
+            <form class="input-multa">
+                <div class="item-multa">
+                    <span id="text"><b>Multas:</br> $<span class="checarmultas"></span></b> Dólares</span></br></br></br>
+                    <span>Você deseja pagar suas multas?</span></br>
+                    <input type="number" placeholder="Valor que deseja pagar" class="valorMulta" />
+                </div>
+                <button type="submit" class="clean" id="botao1">SIM</button>
+                <button type="submit" class="clean" id="botao2a">NÃO</button>
+            </form>
+        </div>
+        <div class="modal" style="display: none">
+            <i class="material-icons">swap_horiz</i><span id="text">Transferência</span>
+            <span><i class="clear" class="material-icons">clear</i></span>
+
+            <form class="input-modal" id="trans" style="display: none">
+                <div class="item-modal">
+                    <span>Informe a Quantidade <i class="material-icons" style="font-size: 12px">keyboard_arrow_down</i></span><br>
+                    <input id="amount" placeholder="$ 100,00">
+                </div>
+                <div class="item-modal">
+                    <span>Informe a Pessoa <i class="material-icons" style="font-size: 12px">keyboard_arrow_down</i></span><br>
+                    <input class="toplayer" id="toPlayer" placeholder="ID Jogador">
+                </div>
+                <button type="submit" class="clear" id="submit">Concluir</button>
+            </form>
+
+            <form class="input-modal" id="sacar" style="display: none">
+
+                <div class="item-modal">
+                    <span>Informe a Quantidade <i class="material-icons" style="font-size: 12px">keyboard_arrow_down</i></span><br>
+                    <input id="amount" placeholder="$ 100,00">
+                </div>
+
+                <div class="item-modal" id="desactive">
+                    <span>Informe a Pessoa <i class="material-icons" style="font-size: 12px">keyboard_arrow_down</i></span><br>
+                    <input placeholder="ID Jogador" disabled>
+                </div>
+
+                <button type="submit" class="clear" id="submit">Concluir</button>
+            </form>
+
+            <form class="input-modal" id="depositar" style="display: none">
+                <div class="item-modal">
+                    <span>Informe a Quantidade <i class="material-icons" style="font-size: 12px">keyboard_arrow_down</i></span><br>
+                    <input id="amount" placeholder="$ 100,00">
+                </div>
+                <div class="item-modal" id="desactive">
+                    <span>Informe a Pessoa <i class="material-icons" style="font-size: 12px">keyboard_arrow_down</i></span><br>
+                    <input placeholder="ID Jogador" disabled>
+                </div>
+                <button type="submit" class="clear" id="submit">Concluir</button>
+            </form>
+        </div>
+
+        <img id="imagem" src="https://cdn.discordapp.com/attachments/602649660477145131/629046743773872148/Screenshot_6.jpg">
+        <div class="blur">
+            <div class="box-banco">
+                <div class="card-nu">
+                    <div class="card-header">
+                        <i class="material-icons">history</i>
+                    </div>
+
+                    <div class="card-content" id="extrato">
+
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="card-footer__description">
+                        <span class="tag--extract">Extrato</span> Cheque seu extrato com NuBank
+                        </span>
+                    </div>
+                </div>
+                <div class="card-nu">
+                    <div class="card-header">
+                        <i class="material-icons">attach_money</i>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="card-content__title">Saldo Disponível</div>
+                        <div class="card-content__value">$ <span class="currentBalance">2.950,60</span></div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-footer__description">
+                        <span class="tag--success">Saldo</span> Seu saldo está seguro com a NuBank, sinta-se livre para usa-lo.
+                        </span>
+                    </div>
+                    <div id="title">
+                        <span><span class="identidade">Luizao da Federal</span>
+                        <div class="card-content__title">Dinheiro da Carteira $ <span class="dinheiroCarteira">2.950,60</span></div>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                        
+                        </span>
+                    </div>
+                </div>
+                <div class="card-nu">
+                    <div class="card-header">
+                        <i class="material-icons">money_off</i>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="card-content__title">Multas Pendentes</div>
+                        <div class="card-content__value">$ <span class="multasbalance">2.950,60</span></div>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="card-footer__description">
+                        <span class="tag--error">Multas</span> Pague suas multas com a NuBank.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="box-acoes">
+                <div class="item" data-display="trans" data-nome="Transferências" onclick="Modal(this)">
+                    <i class="material-icons">swap_horiz</i>
+                    <span>Transferência</span>
+                </div>
+                <div class="item" data-display="depositar" data-nome="Depositos" onclick="Modal(this)">
+                    <i class="material-icons">keyboard_arrow_up</i><br>
+                    <span>Depositar</span>
+                </div>
+                <div class="item" data-display="sacar" data-nome="Saques" onclick="Modal(this)">
+                    <i class="material-icons">keyboard_arrow_down</i><br>
+                    <span>Sacar</span>
+                </div>
+                <div class="item" id="PagarMultas" data-nome="Multa" onclick="Multa(this)">
+                    <i class="material-icons">payment</i><br>
+                    <span>Pagar Multas</span>
+                </div>
+                <div class="item" id="SaqueRapido">
+                    <i class="material-icons">timer</i><br>
+                    <span>Saque Rapido</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        function Modal(element) {
+            $('.modal').fadeIn();
+            $('.blur').css('filter', 'blur(5px)');
+            $('.box-acoes').css('opacity', '0');
+
+            AcaoName = document.getElementById('text');
+            AcaoName.innerHTML = element.dataset.nome;
+
+            $('#' + element.dataset.display).fadeIn();
+        }
+        $('.clear').click(function() {
+            $('.modal').css('display', 'none');
+            $('.blur').css('filter', 'blur(0)');
+            $('.box-acoes').css('opacity', '1');
+            $('.input-modal').fadeOut();
+        });
+        function Multa(element) {
+            valor = $('.checarmultas').html();
+            if (valor == 0 || valor == null){
+            $.post('http://vrp_banconl/erroMulta', JSON.stringify({}));
+            } else{
+            $('.multa').fadeIn();
+            $('.blur').css('filter', 'blur(5px)');
+            $('.box-acoes').css('opacity', '0');
+            }
+            AcaoName = document.getElementById('text');
+            AcaoName.innerHTML = element.dataset.nome;
+
+            $('#' + element.dataset.display).fadeIn();
+
+        }
+        $('.clean').click(function() {
+            $('.multa').css('display', 'none');
+            $('.blur').css('filter', 'blur(0)');
+            $('.box-acoes').css('opacity', '1');
+            
+        });
+    </script>
+</body>
